@@ -1,0 +1,8 @@
+services:
+  web:
+    image: hacktifytechnologies/hacktify-php-backdoor:latest
+    container_name: hacktify-php-backdoor
+    volumes:
+      - ./index.php:/var/www/html/index.php
+    ports:
+      - "8080:80"

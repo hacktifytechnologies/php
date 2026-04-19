@@ -1,0 +1,36 @@
+- name: 'HACKTIFY: Setup PHP 8.1 Backdoor RCE Lab'
+  id: 27f42db1-cfbc-db61-fcae-11ce3b0043c3
+  description: >-
+    A PHP web application is running on port 8080. The server is running a
+    development build of PHP that was published to the official repository
+    before a supply chain compromise was discovered. Your objective is to
+    achieve unauthenticated Remote Code Execution. Investigate the HTTP
+    request handling behaviour of this PHP build — specifically look at how
+    it processes non-standard HTTP request headers. One particular header
+    activates a hidden code evaluation path. Find it and use it to execute
+    OS commands on the server.
+  tactic: initial-access
+  technique_id: T1195.001
+  technique_name: 'Supply Chain Compromise: Compromise Software Dependencies and Development Tools'
+  singleton: true
+  repeatable: false
+  delete_payload: false
+  executors:
+    - name: sh
+      platform: linux
+      command: |
+        git clone https://github.com/hacktifytechnologies/php /opt/hacktify/php
+        cd /opt/hacktify/php
+        chmod +x setup.sh
+        bash setup.sh -a
+      code: null
+      language: null
+      build_target: null
+      payloads: []
+      uploads: []
+      timeout: 300
+      parsers: []
+      cleanup: []
+      variations: []
+      additional_info: {}
+  requirements: []
